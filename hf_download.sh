@@ -4,12 +4,12 @@
 
 # usage explanation: 
 # download model from huggingface: bash hf_download.sh [remote-model-dir] [local-save-dir]
-# download dataset from huggingface: bash hf_download.sh dataset [remote-dataset-dir] [local-save-dir]
+# download dataset from huggingface: bash hf_download.sh [remote-dataset-dir] [local-save-dir] [repo_type]
 # download model needed token from huggingface: bash hf_download.sh [remote-model-dir] [local-save-dir] [huggingface user access tokens]
 
 # usage example:
 # download Qwen1.5-14B-Chat model from huggingface: bash hf_download.sh Qwen/Qwen1.5-14B-Chat qwen1_5-14b-chat
-# download tatsu-lab/alpaca dataset from huggingface: bash hf_download.sh dataset tatsu-lab/alpaca alpaca
+# download tatsu-lab/alpaca dataset from huggingface: bash hf_download.sh tatsu-lab/alpaca alpaca dataset
 # download meta-Llama3-Instruct model from huggingface: bash hf_download.sh meta-llama/Meta-Llama-3-8B-Instruct llama3-8b-instruct hf****
 # where hf**** is your huggingface access tokens
 

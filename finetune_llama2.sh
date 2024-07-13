@@ -9,7 +9,7 @@
 # MODEL_SIZE: llama2 model type
 # DATA_PATH: dataset path for finetuning
 # CKPT_LOAD_PATH: llama2 model megatron checkpoint load path
-#TOKENIZER_PATH: llama2 model tokenizer path
+# TOKENIZER_PATH: llama2 model tokenizer path
 
 
 export OMP_NUM_THREADS=1

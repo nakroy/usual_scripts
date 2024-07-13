@@ -42,8 +42,6 @@ mkdir -p ${RESULT_SAVE_PATH}/log/${LOG_NAME}
 
 # dataset path
 DATA_PATH=${BASE_PATH}/dataset/finetune_dataset/llama-2-13b-hf/alpaca_text_document
-DATA_CACHE_PATH="./data_cache/${LOG_NAME}"
-mkdir -p ${DATA_CACHE_PATH}
 
 # ckpt load path & save path
 CKPT_LOAD_PATH=${BASE_PATH}/model_weights/llama2-13b-hf-tp${TP}-pp${PP}/iter_0000001
@@ -168,7 +166,6 @@ DATA_ARGS=" \
        --num-workers 0 \
        --tokenizer-type Llama2Tokenizer \
        --tokenizer-model ${TOKENIZER_PATH} \
-       --data-cache-path ${DATA_CACHE_PATH} \
        "
  
 CMD="${LAUNCHER} \

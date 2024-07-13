@@ -1,7 +1,17 @@
-# This is a script for finetuning Megatron-LM llama2 model
+# This is a script for finetuning Megatron-LM llama2 model (default platform: 16 * H20 GPU, 2 nodes)
 # repository: https://github.com/NVIDIA/Megatron-LM.git
 # branch：git checkout 86850db
 # Setting the environment variables
+# If using docker swarm for distributed training, please set NCCL_SOCKET_IFNAME, otherwise unset it
+# Important Params Need to Be Set Manually:
+# TP: megatron tensor model parallel size
+# PP: megatron pipeline model parallel size
+# MODEL_SIZE: llama2 model type
+# DATA_PATH: dataset path for finetuning
+# CKPT_LOAD_PATH: llama2 model megatron checkpoint load path
+#TOKENIZER_PATH: llama2 model tokenizer path
+
+
 export OMP_NUM_THREADS=1
 export CUDA_DEVICE_MAX_CONNECTIONS=1
 export NCCL_DEBUG=WARN

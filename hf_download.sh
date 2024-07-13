@@ -1,6 +1,16 @@
-#!/bin/bash
+# This is a script for using huggingface-cli to download files from huggingface
+# python requirement:
+# pip install -U huggingface-hub
 
-# use mirror address to speed up
+# usage explanation: 
+# download model from huggingface: bash hf_download.sh [remote-model-dir] [local-save-dir]
+# download dataset from huggingface: bash hf_download.sh dataset [remote-dataset-dir] [local-save-dir]
+
+# usage example:
+# download Qwen1.5-14B-Chat model from huggingface: bash hf_download.sh Qwen/Qwen1.5-14B-Chat qwen1_5-14b-chat
+# download tatsu-lab/alpaca dataset from huggingface: bash hf_download.sh dataset tatsu-lab/alpaca alpaca
+
+# use mirror address to speed up for Chinese users
 export HF_ENDPOINT=https://hf-mirror.com
 
 # get input params

@@ -1,4 +1,6 @@
-# finetune_llama2.sh
+# This is a script for finetuning Megatron-LM llama2 model
+# repository: https://github.com/NVIDIA/Megatron-LM.git
+# branch：git checkout 86850db
 # Setting the environment variables
 export OMP_NUM_THREADS=1
 export CUDA_DEVICE_MAX_CONNECTIONS=1

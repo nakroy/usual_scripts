@@ -1,3 +1,6 @@
+# This is a script for finetuning Megatron-LM llama2 model (default platform: 16 * H20 GPU, 2 nodes)
+# repository: https://github.com/NVIDIA/Megatron-LM.git
+# branch：git checkout 86850db
 # This is a script to preprocess finetune dataset
 # The dataset we use is downloaded from: 
 # https://huggingface.co/datasets/tatsu-lab/alpaca/resolve/main/data/train-00000-of-00001-a09b74b3ef9c3b56.parquet

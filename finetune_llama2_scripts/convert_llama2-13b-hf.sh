@@ -1,3 +1,6 @@
+# This is a script for finetuning Megatron-LM llama2 model (default platform: 16 * H20 GPU, 2 nodes)
+# repository: https://github.com/NVIDIA/Megatron-LM.git
+# branch：git checkout 86850db
 # This is a script to convert llama-2-13b-hf model downloaded from huggingface into mcore(megatron) type checkpoint
 # TP=8, PP=2 were used in 2 nodes 16 GPUs, change these two arguments if you use different amounts of GPUs
 # params dtype: torch.float32(default), torch.float16(--fp16), torch.bfloat16(--bf16)

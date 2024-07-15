@@ -56,7 +56,7 @@ mkdir -p ${RESULT_SAVE_PATH}/log/${LOG_NAME}
 DATA_PATH=${BASE_PATH}/dataset/finetune_dataset/llama-2-13b-hf/alpaca_text_document
 
 # ckpt load path & save path
-CKPT_LOAD_PATH=${BASE_PATH}/model_weights/llama2-13b-hf-tp${TP}-pp${PP}/iter_0000001
+CKPT_LOAD_PATH=${BASE_PATH}/model_weights/llama2-13b-hf-tp${TP}-pp${PP}
 CKPT_SAVE_PATH=${RESULT_SAVE_PATH}/ckpt/${LOG_NAME}
 mkdir -p ${RESULT_SAVE_PATH}/ckpt/
 

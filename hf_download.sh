@@ -6,6 +6,8 @@
 # -----------------------------------------------------------------------------------------------------------------------------------
 # download model from huggingface     :  bash hf_download.sh -r [remote-model-dir] -l [local-save-dir]
 # -----------------------------------------------------------------------------------------------------------------------------------
+# download model of specific revision : bash hf_download.sh -v [revision] -r [remote-model-dir] -l [local-save-dir]
+# -----------------------------------------------------------------------------------------------------------------------------------
 # download dataset from huggingface   :  bash hf_download.sh -r [remote-dataset-dir] -l [local-save-dir] -y [repo_type]
 # -----------------------------------------------------------------------------------------------------------------------------------
 # download model needed token         :  bash hf_download.sh -r [remote-model-dir] -l [local-save-dir] -t [access tokens]
@@ -16,6 +18,9 @@
 # Usage Examples:
 # -----------------------------------------------------------------------------------------------------------------------------------
 # download Qwen1.5-14B-Chat model     :  bash hf_download.sh -r Qwen/Qwen1.5-14B-Chat -l qwen1_5-14b-chat 
+# -----------------------------------------------------------------------------------------------------------------------------------
+# download specific revision model    :  bash hf_download.sh -v main -r Qwen/Qwen1.5-14B-Chat -l qwen1_5-14b-chat
+# Notes: revision can be a branch name, a tag or a commit bash
 # -----------------------------------------------------------------------------------------------------------------------------------
 # download tatsu-lab/alpaca dataset   :  bash hf_download.sh -r tatsu-lab/alpaca -l alpaca -y dataset
 # -----------------------------------------------------------------------------------------------------------------------------------
@@ -32,6 +37,7 @@ token=""
 remote_dir=""
 local_dir=""
 repo_type=""
+revision=""
 
 # command usage help
 show_help() {
@@ -42,11 +48,12 @@ show_help() {
     echo "  -r    Remote directory (required)"
     echo "  -l    Local directory (required)"
     echo "  -y    Repository type, e.g., 'dataset' (optional)"
+    echo "  -v    Specific revision of remote hub, can be a branch name, a tag, or a commit bash"
     echo "  -h    Show this help message"
 }
 
 
-while getopts ":t:r:l:y:h" opt; do
+while getopts ":t:r:l:y:v:h" opt; do
   case $opt in
     t) token="$OPTARG"
     ;;
@@ -55,6 +62,8 @@ while getopts ":t:r:l:y:h" opt; do
     l) local_dir="$OPTARG"
     ;;
     y) repo_type="$OPTARG"
+    ;;
+    v) revision="$OPTARG"
     ;;
     h) show_help
        exit 0
@@ -75,9 +84,9 @@ fi
 
 # construct token argument
 if [ -n "$token" ]; then
-    token_type_arg="--token $token"
+    token_arg="--token $token"
 else
-    token_type_arg=""
+    token_arg=""
 fi
 
 # construct repo_type argument
@@ -85,6 +94,13 @@ if [ "$repo_type" == "dataset" ]; then
     repo_type_arg="--repo-type dataset"
 else
     repo_type_arg=""
+fi
+
+# construct revision argument
+if [ -n "$revision" ]; then
+    revision_arg="--revision $revision"
+else
+    revision_arg=""
 fi
 
 #  execute huggingface-cli command
@@ -96,7 +112,7 @@ while true; do
         exclude_files=""
     fi
     
-    if huggingface-cli download $token_type_arg $repo_type_arg --resume-download "$remote_dir" --local-dir "$local_dir" --exclude $exclude_files --local-dir-use-symlinks False; then
+    if huggingface-cli download $revision_arg $token_arg $repo_type_arg --resume-download "$remote_dir" --local-dir "$local_dir" --exclude $exclude_files --local-dir-use-symlinks False; then
         echo "Download finished"
         break
     else
